@@ -51,7 +51,7 @@ Before training a new CrysAE model, you will need to:
 - [Define a customized dataset](#define-a-customized-dataset) at `root_dir` to store the structure-property relations of interest.
 
 ```bash
-python main.py data-path = '../data/' --is-global-loss = <1/0> --is-local-loss = <1/0>  --save-path = <path_to_save_pretrained_model>
+python main.py --data-path = '../data/' --is-global-loss = <1/0> --is-local-loss = <1/0>  --save-path = <path_to_save_pretrained_model>
 ```
 Once the training is done the saved model will be saved at save-path.
 

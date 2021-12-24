@@ -64,8 +64,6 @@ def main(seed):
     max_num_nbr = args.max_nbr
     local_loss_flag=args.is_local_loss
     global_loss_flag = args.is_global_loss
-    print(local_loss_flag)
-    print(global_loss_flag)
     if local_loss_flag==0 and  global_loss_flag==0:
         print("Both Global and Local Loss flag is False, cant pretrain the autoencoder. Turn atleast one of them as True")
         exit()

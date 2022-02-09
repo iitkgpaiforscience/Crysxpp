@@ -90,14 +90,18 @@ You can use the utils.py file to generate the data as per this format.
 
 ### Train a CrysAE model
 
-Before training a new CrysAE model, you will need to:
+We have already trained the autoencoder with 37K data and a pretrained model (model.pth) will be provided into the '../model' directory.
 
+Yet, if You want to train the autoenoder module from scratch by some other dataset, use the following procedure :
+
+Before training a new CrysAE model, you will need to:
 - [Define a customized dataset](#define-a-customized-dataset) at `root_dir` to store the structure-property relations of interest.
+- Run the following command
 
 ```bash
 python main.py --data-path '../data/' --is-global-loss <1/0> --is-local-loss <1/0>  --save-path <path_to_save_pretrained_model>
 ```
-Once the training is done the saved model will be saved at save-path. A pretrained CrysAE model is provided in "model/" directory.
+Once the training is done the saved model will be saved at save-path.
 
 ### Train a CrysXPP model
 Before training a new CrysXPP model, you will need to:
@@ -109,7 +113,8 @@ You can train the property predictor module by the following command :
 ```bash
 python prop.py --pretrained-model=<Pretrain_CrysAE_path> --batch-size=512 --epoch=200 --test-ratio=0.8
 ```
-As "pretrained-model" you can either use the existing pretarined CrysAE model "model/model_pretrain.pth" or you can pretrain your own  [CrysAE model](#train-a-crysae-model)and use the saved model.
+As "pretrained-model" you can either use the existing pretarined CrysAE model "model/model_pretrain.pth" or you can pretrain your own  [CrysAE model](#train-a-crysae-model) and use the saved model.
+
 Here you can set set the following hyperparameters :
 
 - lrate : Learning Rate (Default : 0.003).

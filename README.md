@@ -88,7 +88,7 @@ root_dir
 There is a examples of customized dataset in the repository: `../data/`, where in id_prop file we have formation energy values.
 You can use the utils.py file to generate the data as per this format.
 
-### Train a CrysAE model :
+### Train a CrysAE model
 
 Before training a new CrysAE model, you will need to:
 
@@ -99,7 +99,7 @@ python main.py --data-path '../data/' --is-global-loss <1/0> --is-local-loss <1/
 ```
 Once the training is done the saved model will be saved at save-path.
 
-### Train a CrysXPP model :
+### Train a CrysXPP model
 Before training a new CrysXPP model, you will need to:
 
 - [Define a customized dataset](#define-a-customized-dataset) at `root_dir` to store the structure-property relations of interest.
@@ -122,6 +122,15 @@ After training, you will get following files :
 
 - ``../model/model_pp.pth`` : Saved model for that particular property.
 -  ``../results/Prediction/<DATE>/<DATETIME>/out.txt`` : All the traing results for all epochs and all the hyperparameters are saved here.
+
+## Data
+
+We have used the dataset provided by [CGCNN](https://github.com/txie-93/cgcnn). Please use the dataset to reproduce the results.
+
+## Authors
+
+This software was primarily written by [Kishalay Das](https://kdmsit.github.io/) & [Bidisha Samanta](https://sites.google.com/view/bidisha-samanta/) 
+and was advised by [Prof. Niloy Ganguly](http://www.facweb.iitkgp.ac.in/~niloy/), Prof. Satadeep Bhattacharjee, [Prof. Pawan Goyal](https://cse.iitkgp.ac.in/~pawang/) and Prof. Seung-Cheol Lee. 
 
 ## License
 

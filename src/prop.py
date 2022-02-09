@@ -1,6 +1,5 @@
 from data_prop import *
 from model import Property_prediction_deep
-from util import *
 import pytz
 import torch
 import os
@@ -83,11 +82,8 @@ def plot(epoch_list, loss_prop_list,path):
 
 def args_parse():
     parser = argparse.ArgumentParser()
-    # parser.add_argument('--data-path', type=str, default='../../mp_2018/', help='Root Data Path')
-    # parser.add_argument('--data-path', type=str, default='../../data_139K/', help='Data Path')
-    # parser.add_argument('--data-path', type=str, default='../data_small/', help='Data Path')
     parser.add_argument('--data-path', type=str, default='../data/', help='Data Path')
-    parser.add_a    rgument('--test-ratio', type=float, default=0.8, help='Test Split')
+    parser.add_argument('--test-ratio', type=float, default=0.8, help='Test Split')
     parser.add_argument('--lrate', type=float, default=0.01, help='Learning Rate')
     parser.add_argument('--atom-feat', type=int, default=64, help='Atom Feature Dimension')
     parser.add_argument('--nconv', type=int, default=3, help='Number of Convolution Layers')
@@ -144,8 +140,6 @@ def main(seed):
 
     collate_fn = collate_pool
     idx_train, idx_test = train_test_split(range(datasize), test_size=test_ratio, random_state=42)
-    # idx_train, test_size = train_test_split(range(datasize), test_size=0.14, random_state=42)
-    # idx_test, idx_val = train_test_split(test_size, test_size=0.5, random_state=42)
 
     train_data_loader = get_data_loader(dataset=full_dataset,collate_fn=collate_fn,train_size=idx_train,batch_size=batch_size,num_workers=workers,pin_memory=cuda)
     test_data_loader = get_data_loader(dataset=full_dataset,collate_fn=collate_fn,train_size=idx_test,batch_size=batch_size,num_workers=workers,pin_memory=cuda)
@@ -182,9 +176,6 @@ def main(seed):
     print("Test size " + str(len(idx_test)))
     out.writelines("Test size " + str(len(idx_test)))
     out.writelines("\n")
-    # print("Val size " + str(len(idx_val)))
-    # out.writelines("Val size " + str(len(idx_val)))
-    # out.writelines("\n")
     out.writelines("\n")
 
     print("Load Batch Data(Train/Test) Started .....")
@@ -269,9 +260,8 @@ def main(seed):
                 loss = loss+loss_function(targets_var[j], target_p)
                 ae = ae + mae(normalizer.denorm(target_p.data), target_o)
             loss=loss/len(target_predicted)
-
             l1_regularization=sparse_loss(prop_model,input_var)
-            # loss = loss + lamda * l1_regularization
+            loss = loss + lamda * l1_regularization
 
             loss.backward()
             optimizer.step()
@@ -320,8 +310,7 @@ def main(seed):
     print("Test Ratio :" + str(test_ratio))
     print("Best Test MAE :" + str(best_test_mae) + " Best Test Epcoh :" + str(best_test_epoch))
     out.writelines("Best Test MAE :" + str(best_test_mae) + " Best Test Epcoh :" + str(best_test_epoch))
-    # torch.save(best_model,"../model/model_exp_dft_fe"+"_"+str(test_ratio)+".pth")
-    # torch.save(best_model, "../model/model_exp_dft_fe.pth")
+    torch.save(best_model,"../model/model_pp.pth")
     plot(list(range(epoch + 1)), train_loss,path)
 
 

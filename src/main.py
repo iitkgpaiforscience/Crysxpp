@@ -1,6 +1,5 @@
 from data import *
 from model import CrystalAE
-from util import *
 import pytz
 import torch
 import os

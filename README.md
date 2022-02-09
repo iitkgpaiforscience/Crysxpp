@@ -90,11 +90,9 @@ You can use the utils.py file to generate the data as per this format.
 
 ### Train a CrysAE model
 
-We have already trained the autoencoder with 37K data and a pretrained model (model.pth) will be provided into the '../model' directory.
+We have already trained the autoencoder with 37K data and a pretrained model (model_pretrain.pth) will be provided into the '../model' directory.
 
 Yet, if You want to train the autoenoder module from scratch by some other dataset, use the following procedure :
-
-Before training a new CrysAE model, you will need to:
 - [Define a customized dataset](#define-a-customized-dataset) at `root_dir` to store the structure-property relations of interest.
 - Run the following command
 

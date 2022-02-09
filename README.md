@@ -97,7 +97,7 @@ Before training a new CrysAE model, you will need to:
 ```bash
 python main.py --data-path '../data/' --is-global-loss <1/0> --is-local-loss <1/0>  --save-path <path_to_save_pretrained_model>
 ```
-Once the training is done the saved model will be saved at save-path.
+Once the training is done the saved model will be saved at save-path. A pretrained CrysAE model is provided in "model/" directory.
 
 ### Train a CrysXPP model
 Before training a new CrysXPP model, you will need to:
@@ -109,6 +109,7 @@ You can train the property predictor module by the following command :
 ```bash
 python prop.py --pretrained-model=<Pretrain_CrysAE_path> --batch-size=512 --epoch=200 --test-ratio=0.8
 ```
+As "pretrained-model" you can either use the existing pretarined CrysAE model "model/model_pretrain.pth" or you can pretrain your own  [CrysAE model](#train-a-crysae-model)and use the saved model.
 Here you can set set the following hyperparameters :
 
 - lrate : Learning Rate (Default : 0.003).
@@ -125,12 +126,12 @@ After training, you will get following files :
 
 ## Data
 
-We have used the dataset provided by [CGCNN](https://github.com/txie-93/cgcnn). Please use the dataset to reproduce the results.
+We have used the dataset provided by [CGCNN](https://github.com/txie-93/cgcnn). Please use the dataset to reproduce the results. CIF files are given in the "data/" directory.
 
 ## Authors
 
 This software was primarily written by [Kishalay Das](https://kdmsit.github.io/) & [Bidisha Samanta](https://sites.google.com/view/bidisha-samanta/) 
-and was advised by [Prof. Niloy Ganguly](http://www.facweb.iitkgp.ac.in/~niloy/), Prof. Satadeep Bhattacharjee, [Prof. Pawan Goyal](https://cse.iitkgp.ac.in/~pawang/) and Prof. Seung-Cheol Lee. 
+and was advised by [Prof. Niloy Ganguly](http://www.facweb.iitkgp.ac.in/~niloy/), , [Prof. Pawan Goyal](https://cse.iitkgp.ac.in/~pawang/), Dr. Satadeep Bhattacharjee and Dr. Seung-Cheol Lee. 
 
 ## License
 

@@ -85,8 +85,7 @@ root_dir
 ├── ...
 ```
 
-There is a examples of customized dataset in the repository: `../data/`, where in id_prop file we have formation energy values.
-You can use the utils.py file to generate the data as per this format.
+There is a examples of customized dataset in the repository: `../data/`, with 37K cif files, where in id_prop file we have formation energy values.
 
 ### Train a CrysAE model
 
@@ -129,7 +128,7 @@ After training, you will get following files :
 
 ## Data
 
-We have used the dataset provided by [CGCNN](https://github.com/txie-93/cgcnn). Please use the dataset to reproduce the results. CIF files are given in the "data/" directory.
+We have used the dataset provided by [CGCNN](https://github.com/txie-93/cgcnn). Please use the dataset to reproduce the results. CIF files are given in the "data/" directory and in id_prop file we have formation energy values.
 
 ## Authors
 

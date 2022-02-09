@@ -1,8 +1,52 @@
-# CrysXPP: An Explainable Property Predictor for Crystalline Materials (NPJ Computational Submission)
+# CrysXPP: An Explainable Property Predictor for Crystalline Materials
 
 This is software package for Crsytal Explainable Property Predictor(CrysXPP) that takes as input
 any arbitary crystal structure in .cif file format and predict different state and elastic properties
 of the material.
+
+It has two modules :
+
+- Crystal Auto Encoder (CrysAE) : An auto-encoder based architecture which is trained with a large amount of unlabeled crystal data which leads to the deep encoding module capturing all the important structural and chemical information of the constituent atoms (nodes) of the crystal graph. 
+
+    ![CrysAE diagram](images/CrysAE.png)
+    <div align='center'><strong>Figure 1. CrysAE Architecure.</strong></div>
+    
+- Crystal eXplainable Property Predictor (CrysXPP) : An Explainable Property Predictor, to which the knowledge acquired by the encoder is transferred and which is further trained with a small amount of property-tagged data.
+
+    ![CrysXPP diagram](images/CrysXPP.png)
+    <div align='center'><strong>Figure 2. CrysXPP Architecure.</strong></div>
+
+The following paper describes the details of the CrysXPP framework:
+
+[CrysXPP: An Explainable Property Predictor for Crystalline Materials](https://arxiv.org/pdf/2104.10869.pdf)
+
+## Table of Contents
+
+- [How to cite](#how-to-cite)
+- [Requirements](#requirements)
+- [Usage](#usage)
+  - [Define a customized dataset](#define-a-customized-dataset)
+  - [Train a CrysAE model](#train-a-crysae-model)
+  - [Train a CrysXPP model](#train-a-crysxpp-model)
+- [Data](#data)
+- [Authors](#authors)
+- [License](#license)
+
+
+## How to cite
+
+If youare using CrysXPP, please cite our work as follow :
+
+```
+@misc{das2021crysxppan,
+      title={CrysXPP:An Explainable Property Predictor for Crystalline Material}, 
+      author={Kishalay Das and Bidisha Samanta and Pawan Goyal and Seung-Cheol Lee and Satadeep Bhattacharjee and Niloy Ganguly},
+      year={2021},
+      eprint={2104.10869},
+      archivePrefix={arXiv},
+      primaryClass={cond-mat.mtrl-sci}
+}
+```
 
 
 ##  Requirements

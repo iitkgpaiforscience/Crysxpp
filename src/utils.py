@@ -5,7 +5,7 @@ import datetime
 # key to query data from Materials Project as string
 API_KEY = "pr3nC2ZPFAvh6Ru5"   #"7MQWG6uxUiesnIw"
 # path where files are written
-FILEPATH = "../data"
+FILEPATH = "../data_again"
 
 
 class Logger(object):
@@ -69,6 +69,7 @@ def queryMPDatabse(input_filepath, properties, sample_fraction=1, fetch_cif=True
 		csv_reader = csv.reader(csv_file)
 		for row in csv_reader:
 			materials_id_list.append(str(row[0]))
+	# materials_id_list = np.random.choice(np.array(materials_id_list),math.ceil(len(materials_id_list)*sample_fraction), replace=False).tolist()
 	batch_size= 46743 #3401 #27429 #46743 #63167
 	start_idx=0
 	final=0
@@ -143,6 +144,9 @@ def processData(dataset, has_cif=True, has_mpid=True, total_size=None):
 			material_hash_counter += 1
 	print("Finished processing dataset!")
 	print("Writing data to files...")
+	with open('id_prop.csv', 'w') as f:
+		write = csv.writer(f)
+		write.writerows(idprop_list)
 	writeData(idprop_list, cif_list, material_id_hash_list)
 
 
@@ -187,6 +191,9 @@ def writeData(idprop_list, cif_list, material_id_hash_list):
 	print("Written material_id_hash.csv")
 
 if __name__ == '__main__':
-	dataset = queryMPDatabse('../material-data/mp-ids-46744.csv', ["formation_energy_per_atom"],
+	# dataset = queryMPDatabse('../material-data/mp-ids-46744.csv', ["formation_energy_per_atom", "band_gap","efermi","volume","total_magnetization"],
+	# 						 print_data=False, fetch_cif=True, sample_fraction=1)
+	dataset = queryMPDatabse('../material-data/mp-ids-46744.csv',
+							 ["pretty_formula","formation_energy_per_atom"],
 							 print_data=False, fetch_cif=True, sample_fraction=1)
 	processData(dataset, has_cif=True)

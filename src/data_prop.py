@@ -196,7 +196,6 @@ class CIFData(Dataset):
 		assert os.path.exists(id_prop_file), 'id_prop.csv does not exist!'
 		with open(id_prop_file) as f:
 			reader = csv.reader(f)
-			headings = next(reader)
 			self.id_prop_data = [row for row in reader]
 		atom_init_file = os.path.join(self.root_dir, 'atom_init.json')
 		assert os.path.exists(atom_init_file), 'atom_init.json does not exist!'
@@ -216,7 +215,6 @@ class CIFData(Dataset):
 
 		if x != 'None':
 			targets.append(float(x))
-			# targets.append(np.log10(float(x)))
 		else:
 			targets.append(float("inf"))
 
